@@ -1,24 +1,73 @@
-# README
+This is an example of an issue with the default sendmail options in rails with the new mail 2.8 gem.
+```
+> bin/rails example --trace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+** Invoke example (first_time)
+** Invoke environment (first_time)
+** Execute environment
+** Execute example
+rails aborted!
+ArgumentError: :arguments expected to be an Array of individual string args
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/mail-2.8.0/lib/mail/network/delivery_methods/sendmail.rb:53:in `initialize'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/mail-2.8.0/lib/mail/message.rb:278:in `new'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/mail-2.8.0/lib/mail/message.rb:278:in `delivery_method'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/delivery_methods.rb:65:in `wrap_delivery_behavior'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/delivery_methods.rb:79:in `wrap_delivery_behavior!'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/base.rb:870:in `mail'
+/home/andy/tmp/rails-sendmail-issue-vrt4/exampleapp/app/mailers/example_mailer.rb:11:in `example'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionpack-7.0.4/lib/abstract_controller/base.rb:215:in `process_action'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionpack-7.0.4/lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-7.0.4/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-7.0.4/lib/action_text/rendering.rb:20:in `with_renderer'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actiontext-7.0.4/lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-7.0.4/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-7.0.4/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-7.0.4/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionpack-7.0.4/lib/abstract_controller/callbacks.rb:233:in `process_action'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionpack-7.0.4/lib/abstract_controller/base.rb:151:in `process'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/rescuable.rb:25:in `block in process'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/rescuable.rb:24:in `process'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionview-7.0.4/lib/action_view/rendering.rb:39:in `process'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/base.rb:646:in `block in process'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-7.0.4/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-7.0.4/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activesupport-7.0.4/lib/active_support/notifications.rb:206:in `instrument'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/base.rb:645:in `process'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/message_delivery.rb:128:in `block in processed_mailer'
+<internal:kernel>:90:in `tap'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/message_delivery.rb:127:in `processed_mailer'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/actionmailer-7.0.4/lib/action_mailer/message_delivery.rb:30:in `__getobj__'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/3.1.0/pp.rb:188:in `pp'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/3.1.0/pp.rb:93:in `block in pp'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/3.1.0/pp.rb:154:in `guard_inspect_key'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/3.1.0/pp.rb:93:in `pp'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/3.1.0/pp.rb:626:in `block in pp'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/3.1.0/pp.rb:625:in `each'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/3.1.0/pp.rb:625:in `pp'
+/home/andy/tmp/rails-sendmail-issue-vrt4/exampleapp/lib/tasks/example.rake:2:in `block in <main>'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/task.rb:281:in `block in execute'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/task.rb:281:in `each'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/task.rb:281:in `execute'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/task.rb:219:in `block in invoke_with_call_chain'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/task.rb:199:in `synchronize'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/task.rb:199:in `invoke_with_call_chain'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/task.rb:188:in `invoke'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/application.rb:160:in `invoke_task'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/application.rb:116:in `block (2 levels) in top_level'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/application.rb:116:in `each'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/application.rb:116:in `block in top_level'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/application.rb:125:in `run_with_threads'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/application.rb:110:in `top_level'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.4/lib/rails/commands/rake/rake_command.rb:24:in `block (2 levels) in perform'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/application.rb:186:in `standard_exception_handling'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.4/lib/rails/commands/rake/rake_command.rb:24:in `block in perform'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/rake-13.0.6/lib/rake/rake_module.rb:59:in `with_application'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.4/lib/rails/commands/rake/rake_command.rb:18:in `perform'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.4/lib/rails/command.rb:51:in `invoke'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.4/lib/rails/commands.rb:18:in `<main>'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bootsnap-1.15.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+/home/andy/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bootsnap-1.15.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+bin/rails:4:in `<main>'
+Tasks: TOP => example
+```
